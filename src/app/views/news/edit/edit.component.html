@@ -1,0 +1,51 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Editar Notícia
+        </div>
+        <div class="card-body">
+          <form [formGroup]="newsForm">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="title">Título</label>
+                    <input class="form-control" id="title" placeholder="Título da Notícia" type="text" formControlName="title" value="{{news?.title}}"></div>
+                </div>
+              </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="description">Descrição</label>
+                  <input class="form-control" id="description" placeholder="Descrição curta da Notícia" type="text" formControlName="description" value="{{news?.description}}"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="theme">Tema</label>
+                  <select id="theme" class="form-control" formControlName="theme">
+                    <option value="esportes">Esportes</option>
+                    <option value="politica">Política</option>
+                    <option value="entretenimento">Entretenimento</option>
+                    <option value="famosos">Famosos</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="img">Link Imagem</label>
+                  <input class="form-control" id="img" placeholder="Link da Imagem" type="text" formControlName="img" value="{{news?.img}}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button type="button" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+            </div>
+          </form>
+    </div>
+  </div>
+</div>

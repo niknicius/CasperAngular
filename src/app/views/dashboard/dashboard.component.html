@@ -1,55 +1,5 @@
 <div class="animated fadeIn">
   <div class="row">
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-light-blue">
-        <div class="card-body pb-0">
-          <button type="button" class="btn btn-transparent p-0 float-right">
-            <i class="cui-pencil icons"></i>
-          </button>
-          <div class="text-value">15</div>
-          <div>Notícias Cadastradas</div>
-          <div class="row"><br></div>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-cyan">
-        <div class="card-body pb-0">
-          <button type="button" class="btn btn-transparent p-0 float-right">
-            <i class="cui-bookmark icons"></i>
-          </button>
-          <div class="text-value">5</div>
-          <div>Categorias Cadastradas</div>
-          <div class="row"><br></div>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-success">
-        <div class="card-body pb-0">
-          <button type="button" class="btn btn-transparent p-0 float-right">
-            <i class="cui-lightbulb icons"></i>
-          </button>
-          <div class="text-value">Online</div>
-          <div>Estado do BOT</div>
-          <div class="row"><br></div>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-teal">
-        <div class="card-body pb-0">
-          <button type="button" class="btn btn-transparent p-0 float-right">
-            <i class="cui-speech icons"></i>
-          </button>
-          <div class="text-value">52452</div>
-          <div>Mensagens Enviadas</div>
-          <div class="row"><br></div>
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
     <div class="col-sm-12 col-md-12">
       <div class="card">
         <div class="card-header">
@@ -74,7 +24,7 @@
               <td>{{news.description}}</td>
               <td>{{news.theme}}</td>
               <td><a href="https://niknicius.tk/news/url/{{news.link}}">Link Noticia</a></td>
-              <td><div class="row"><i class="cui-trash icons font-2xl" (click)="deleteNews(news._id)"></i><i class="cui-pencil icons font-2xl "></i></div></td>
+              <td><div class="row"><i class="cui-trash icons font-2xl" (click)="deleteNews(news._id)"></i><i class="cui-pencil icons font-2xl" (click)="edit(news._id)"></i></div></td>
             </tr>
             </tbody>
           </table>
@@ -90,6 +40,7 @@
 <div bsModal #newsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="newsModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      <form [formGroup]="newsForm">
       <div class="modal-header">
         <h4 class="modal-title">Cadastro de Notícia</h4>
         <button type="button" class="close" (click)="newsModal.hide()" aria-label="Cancelar">
@@ -101,14 +52,14 @@
           <div class="col-sm-12">
           <div class="form-group">
             <label for="name">Título</label>
-            <input class="form-control" id="name" placeholder="Título da Notícia" type="text"></div>
+            <input class="form-control" id="title" placeholder="Título da Notícia" type="text" formControlName="title"></div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
               <label for="desc">Descrição</label>
-              <input class="form-control" id="desc" placeholder="Descrição curta da Notícia" type="text">
+              <input class="form-control" id="description" placeholder="Descrição curta da Notícia" type="text" formControlName="description">
             </div>
           </div>
         </div>
@@ -116,11 +67,11 @@
           <div class="col-sm-12">
             <div class="form-group">
               <label for="theme">Tema</label>
-              <select id="theme" class="form-control">
+              <select id="theme" class="form-control" formControlName="theme">
                 <option value="esportes">Esportes</option>
                 <option value="politica">Política</option>
                 <option value="entretenimento">Entretenimento</option>
-                <option value="politica">Famosos</option>
+                <option value="famosos">Famosos</option>
               </select>
             </div>
           </div>
@@ -129,15 +80,16 @@
           <div class="col-sm-12">
             <div class="form-group">
               <label for="img">Link Imagem</label>
-              <input class="form-control" id="img" placeholder="Link da Imagem" type="text">
+              <input class="form-control" id="img" placeholder="Link da Imagem" type="text" formControlName="img">
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="newsModal.hide()">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
       </div>
+      </form>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

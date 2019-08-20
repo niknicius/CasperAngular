@@ -11,11 +11,12 @@ export class ApiService {
   private apiUrl = 'https://niknicius.tk/api/';
 
   post(endpoint: string, body: any) {
+    console.log(body);
     return this.http.post(this.apiUrl.concat(endpoint), body);
   }
 
   put(endpoint: string, body: any) {
-    return this.http.post(this.apiUrl.concat(endpoint), body);
+    return this.http.put(this.apiUrl.concat(endpoint), body);
   }
 
   get(endpoint: string) {

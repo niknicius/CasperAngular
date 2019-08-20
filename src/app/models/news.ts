@@ -3,7 +3,6 @@ export class News {
     public title: String,
     public description: String,
     public theme: String,
-    public link: String,
-    public  img: String,
+    public img: String,
   ) {}
 }

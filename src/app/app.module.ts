@@ -19,7 +19,7 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { EditComponent } from './views/news/edit/edit.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -45,6 +45,8 @@ import {AuthGuardService} from './services/auth-guard.service';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
 import {AuthInterceptorService} from './services/auth-interceptor.service';
 import {ApiService} from './services/api.service';
+import {EditModule} from './views/news/edit/edit.module';
+
 
 @NgModule({
   imports: [
@@ -60,7 +62,8 @@ import {ApiService} from './services/api.service';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    EditModule,
   ],
   declarations: [
     AppComponent,
@@ -68,7 +71,6 @@ import {ApiService} from './services/api.service';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
   ],
   providers: [{
     provide: LocationStrategy,
